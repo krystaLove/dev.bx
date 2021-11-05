@@ -1,0 +1,29 @@
+<?php
+
+/** @var array $genres */
+/** @var array $movies */
+require_once "./data/movies-db.php";
+require_once "./lib/template-functions.php";
+require_once "./lib/movies-functions.php";
+
+require_once "./lib/helper-functions.php";
+
+/** @var array $config */
+require_once "./config/app.php";
+
+$movie = null;
+if(isset($_GET['movie-id']))
+{
+	$movie = getMovieById($movies, (int) $_GET['movie-id']);
+}
+
+$page = renderTemplate("./resources/pages/detail-movie.php", [
+	'movie' => $movie
+]);
+
+renderLayout($page, [
+	'config' => $config,
+	'genres' => $genres,
+	'content' => $page,
+	'currentPage' => getFileName(__FILE__)
+]);
