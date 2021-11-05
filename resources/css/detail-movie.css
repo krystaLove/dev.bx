@@ -3,6 +3,8 @@
 	flex-flow: column nowrap;
 	display: flex;
 	width: auto;
+	min-width: 0;
+	overflow: hidden;
 	height: auto;
 	margin: 40px 50px 40px 50px;
 	background: #FFFFFF;
@@ -22,7 +24,11 @@
 }
 
 .detail-movie-card--head-title {
-	width: 720px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	min-width: 0;
+	max-width: 800px;
 	height: 64px;
 	font-style: normal;
 	font-weight: bold;
@@ -45,6 +51,11 @@
 }
 
 .detail-movie-card--head-subtitle {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	min-width: 0;
+	max-width: 800px;
 	font-style: normal;
 	font-weight: 600;
 	font-size: 24px;
@@ -53,9 +64,13 @@
 }
 
 .detail-movie-card--head-age-rating {
+	display: flex;
+	justify-content: center;
 	background: rgba(242, 242, 242, 0.1);
 	border: 3px solid #CCCCCC;
 	box-sizing: border-box;
+	width: 50px;
+	height: 35px;
 	border-radius: 7px;
 	font-style: normal;
 	font-weight: 600;
@@ -73,16 +88,18 @@
 }
 
 .detail-movie-card--body-image {
+	justify-content: center;
+	display: flex;
 	width: 493px;
 	height: 754px;
 	background: #F2F2F2;
 	overflow: hidden;
+	padding: 10px;
 }
 
 .detail-movie-card--body-image img {
-	width: calc(100% - 10px);
-	padding: 10px;
-	object-fit: fill;
+	width: 100%;
+	object-fit: cover;
 }
 
 .detail-movie-card--body-right {
@@ -189,4 +206,3 @@
 .rating-bar-element--filled {
 	background: #E78818;
 }
-

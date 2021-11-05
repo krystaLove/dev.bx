@@ -1,14 +1,37 @@
+body {
+	overflow: hidden;
+}
+
 .wrapper {
 	display: flex;
 	overflow: hidden;
-	height: auto;
+	height: 100vh;
 }
 
 .sidebar {
-	overflow-y: auto;
-	display: block;
+	overflow:hidden;
+	display: flex;
+	flex-flow: column nowrap;
 	width: 400px;
 	background: #383838;
+}
+
+.sidebar::-webkit-scrollbar {
+	width: 0;
+}
+
+.logo {
+	display: flex;
+	align-self: center;
+	margin-top: 52px;
+	width: 216px;
+	height: 74px;
+}
+
+.logo img {
+	width: 100%;
+	height: 100%;
+	object-fit: fill;
 }
 
 .container {
@@ -33,8 +56,14 @@
 /* MENU */
 
 .menu {
-	display: block;
+	flex: 1;
+	overflow: hidden;
+	overflow-y: auto;
 	margin: 44px 30px 30px 30px;
+}
+
+.menu::-webkit-scrollbar {
+	width: 0;
 }
 
 .menu-item {
@@ -74,18 +103,6 @@
 	color: #fff
 }
 
-.logo {
-	display: block;
-	margin-top: 52px;
-	margin-left: 81px;
-	width: 216px;
-	height: 74px;
-}
-
-.logo img {
-	object-fit: fill;
-}
-
 /* HEADER */
 
 .header-content {
@@ -98,8 +115,15 @@
 .header-content--search {
 	display: flex;
 	width: 777px;
-	border-bottom: 1px solid #C4C4C4;
+
 	align-items: center;
+}
+
+.header-content--search-bar {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #C4C4C4;
 }
 
 .header-content--search-icon {
@@ -128,31 +152,28 @@
 	line-height: 40px;
 	width: 100%;
 	color: #999999;
+	cursor: text;
 }
 
 .header-content--search-placeholder input:focus {
 	border: none;
-	cursor: text;
 	color: black;
 }
 
 .header-content--search-submit-btn {
+	display: inline-block;
 	width: 89px;
 	height: 40px;
-	margin-left: 15px;
+	margin-left: 20px !important;
+	margin-right: 20px !important;
 	background: #E7A04E;
-	border-radius: 7px;
-	cursor: pointer;
-}
-
-.header-content--search-submit-btn-text {
 	font-family: Open Sans, sans-serif;
 	font-style: normal;
 	font-weight: bold;
-	font-size: 12px;
 	line-height: 40px;
-	text-align: center;
-	color: #FFFFFF;
+	text-decoration: none;
+	border-radius: 7px;
+	cursor: pointer;
 }
 
 .header-content--add-film-btn {
@@ -164,15 +185,45 @@
 	cursor: pointer;
 }
 
-.header-content--add-film-btn-text {
+.header-content--add-film-btn a {
+	text-transform: uppercase;
+}
+
+/* BUTTONS */
+
+.btn-round {
+	display: flex;
+	align-self: center;
+	border-radius: 7px;
+	cursor: pointer;
+	justify-content: center;
+	color: #beb8b8;
+}
+
+.btn-round a {
 	font-family: Open Sans, sans-serif;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 12px;
 	line-height: 40px;
+	text-decoration: none;
 
 	text-align: center;
-	text-transform: uppercase;
-
 	color: #FFFFFF;
+}
+
+.btn-green {
+	background: #4EE7B0;
+}
+
+.btn-green:hover{
+	background: #2a9873;
+}
+
+.btn-orange {
+	background: #E7A04E;
+}
+
+.btn-orange:hover {
+	background: #c5731d;
 }

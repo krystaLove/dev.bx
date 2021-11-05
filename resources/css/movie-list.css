@@ -1,12 +1,14 @@
 .movie-list {
 	display: flex;
-	flex-direction: row;
+	justify-content: center;
 	flex-flow: row wrap;
 	margin: 17px 50px 50px;
+	overflow: hidden;
 }
 
 .movie-list--item {
 	display: block;
+	position: relative;
 	margin-right: 30px;
 	margin-top: 30px;
 	width: 370px;
@@ -49,6 +51,9 @@
 }
 
 .movie-list--item-subtitle {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 	margin-bottom: 15px;
 	font-weight: 600;
 	font-size: 14px;
@@ -109,17 +114,17 @@
 	color: #CCCCCC;
 }
 
-.movie-list--item-hover
-{
+.movie-list--item-hover {
 	display: flex;
 	width: 370px;
 	height: 700px;
+	z-index: 2;
 	position: absolute;
 	background: rgba(0, 0, 0, 0.7);
 	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 	border-radius: 20px;
 	opacity: 0;
-	transition: 1s;
+	transition: 0.5s;
 }
 
 .movie-list--item-hover:hover {
@@ -127,25 +132,15 @@
 }
 
 .movie-list--item-detail-btn {
-	display: flex;
-	align-self: center;
 	margin-left: 75px;
 	margin-right: 75px;
 	width: 221px;
 	height: 56px;
 	background: #4EE7B0;
-	justify-content: center;
-	border-radius: 7px;
-	cursor: pointer;
 }
 
-.movie-list--item-detail-btn-text {
-	text-decoration: none;
-	font-style: normal;
-	font-weight: bold;
+.movie-list--item-detail-btn a {
 	font-size: 18px;
 	line-height: 56px;
-	text-align: center;
 	text-transform: uppercase;
-	color: #FFFFFF;
 }
