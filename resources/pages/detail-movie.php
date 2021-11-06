@@ -20,7 +20,7 @@ require_once "./lib/helper-functions.php";
 	<div class="detail-movie-card--body">
 		<div class="detail-movie-card--body-left">
 			<div class="detail-movie-card--body-image">
-				<img src="./data/images/<?= $movie['id'] ?>.jpg" alt="preview">
+				<img src="<?= getMovieImagePath($movie)?>" alt="preview">
 			</div>
 		</div>
 		<div class="detail-movie-card--body-right">
