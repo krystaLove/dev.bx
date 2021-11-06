@@ -14,24 +14,20 @@ $genreFilter = '';
 $searchFilter = [];
 $currentPage = getFileName(__FILE__);
 
-if($_SERVER['REQUEST_METHOD'] === 'GET')
+if (isset($_GET['search']))
 {
-	if (isset($_GET['search']))
+	$validatedSearch = validateSearch(escape($_GET['search']));
+	if(empty($validatedSearch['errors']))
 	{
-		$validatedSearch = validateSearch(escape($_GET['search']));
-		if(empty($validatedSearch['errors']))
-		{
-			$movies = getMoviesBySubstr($movies, $validatedSearch['value']);
-		}
-
+		$movies = getMoviesBySubstr($movies, $validatedSearch['value']);
 	}
+}
 
-	if(isset($_GET['genre']))
-	{
-		$genreFilter = $_GET['genre'];
-		$movies = getMoviesByGenre($movies, $genres[$_GET['genre']]);
-		$currentPage .= ($genreFilter !== '' ? '?' . $genreFilter : '');
-	}
+if(isset($_GET['genre']))
+{
+	$genreFilter = $_GET['genre'];
+	$movies = getMoviesByGenre($movies, $genres[$_GET['genre']]);
+	$currentPage .= ($genreFilter !== '' ? '?' . $genreFilter : '');
 }
 
 $page = renderTemplate("./resources/pages/movies-list.php", [
