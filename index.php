@@ -13,6 +13,10 @@ require_once "./lib/validate-functions.php";
 $genreFilter = '';
 $searchFilter = [];
 $currentPage = getFileName(__FILE__);
+$validatedSearch = [
+	'errors' => [],
+	'value' => []
+];
 
 if (isset($_GET['search']))
 {
