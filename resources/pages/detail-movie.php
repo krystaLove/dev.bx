@@ -40,7 +40,7 @@ require_once "./lib/helper-functions.php";
 				</div>
 				<div class="about-movie-wrapper--actors-wrapper">
 					<h2>В главных ролях: </h2>
-					<a><?= formAttrOfMovie($movie, 'cast') ?></a>
+					<a><?= implode(', ', $movie['cast']) ?></a>
 				</div>
 			</div>
 			<div class="detail-movie-card--body-right--description-wrapper">

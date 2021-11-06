@@ -62,20 +62,3 @@ function formatMovieDurationInHours(array $movie) : string
 
 	return $result;
 }
-
-function formAttrOfMovie(array $movie, string $attr) : string
-{
-
-	if(!isset($movie[$attr]) || empty($movie[$attr]))
-	{
-		return '';
-	}
-
-	$result = '';
-	foreach($movie[$attr] as $attrValue)
-	{
-		$result .= $attrValue . ', ';
-	}
-
-	return substr_replace($result ,"",-2);
-}

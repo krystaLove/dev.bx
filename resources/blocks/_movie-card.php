@@ -26,7 +26,7 @@ require_once "./lib/helper-functions.php";
 			</div>
 			<div class="movie-list--item-time"><?= $movie['duration'] ?> мин. / <?= formatMovieDurationInHours($movie) ?></div>
 			<div class="movie-list--item-info">
-				<?= formAttrOfMovie($movie, 'genres') ?>
+				<?= implode(', ', $movie['genres']) ?>
 			</div>
 		</div>
 	</div>
