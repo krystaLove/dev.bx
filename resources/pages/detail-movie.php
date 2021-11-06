@@ -25,7 +25,7 @@ require_once "./lib/helper-functions.php";
 		</div>
 		<div class="detail-movie-card--body-right">
 			<div class="detail-movie-card--body-right--rating">
-				<?= renderTemplate("./resources/blocks/_rating-bar.php", ['movie' => $movie]) ?>
+				<?= renderTemplate("./resources/blocks/_rating-bar.php", ['rating' => $movie['rating']]) ?>
 				<div class="detail-movie-card--body-right--rating-score"><a><?= $movie['rating'] ?></a></div>
 			</div>
 			<div class="detail-movie-card--body-right--about-movie-wrapper">
