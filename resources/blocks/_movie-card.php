@@ -8,7 +8,7 @@ require_once "./lib/helper-functions.php";
 <div class="movie-list--item">
 	<div class="movie-list--item-hover">
 		<div class="movie-list--item-detail-btn btn-round btn-green">
-			<a href="detail-movie.php?movie-id= <?= $movie['id'] ?>">Подробнее</a>
+			<a href="detail-movie.php?movie-id=<?= $movie['id'] ?>">Подробнее</a>
 		</div>
 	</div>
 	<div class="movie-list--item-image">
