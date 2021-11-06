@@ -2,15 +2,15 @@
 
 function getMoviesByGenre(array $movies, string $genre) : array
 {
-	return array_filter($movies, function($movie) use ($genre) {
-		return in_array($genre, $movie['genres']);
+	return array_filter($movies, static function($movie) use ($genre) {
+		return in_array($genre, $movie['genres'], true);
 	});
 }
 
 function getMoviesBySubstr(array $movies, string $searchStr) : array
 {
-	return array_filter($movies, function($movie) use ($searchStr) {
-		return strpos(mb_strtolower($movie['title'].$movie['original-title']), mb_strtolower($searchStr)) !== false;
+	return array_filter($movies, static function($movie) use ($searchStr) {
+		return stripos($movie['title'] . $movie['original-title'], $searchStr) !== false;
 	});
 }
 
@@ -19,12 +19,20 @@ function getMovieImagePath(array $movie) : string
 	return "./data/images/" . $movie['id'] . '.jpg';
 }
 
-function getMovieById(array $movies, int $id) : array
+function getMovieById(array $movies, int $id) : ?array
 {
-	return $movies[$id - 1];
+	foreach ($movies as $movie)
+	{
+		if ($movie['id'] === $id)
+		{
+			return $movie;
+		}
+	}
+
+	return null;
 }
 
-function formDurationInHoursOfMovie(array $movie) : string
+function formatMovieDurationInHours(array $movie) : string
 {
 	if($movie == null || !isset($movie['duration']))
 	{
@@ -58,7 +66,7 @@ function formDurationInHoursOfMovie(array $movie) : string
 function formAttrOfMovie(array $movie, string $attr) : string
 {
 
-	if($movie == null || !isset($movie[$attr]) || empty($movie[$attr]))
+	if(!isset($movie[$attr]) || empty($movie[$attr]))
 	{
 		return '';
 	}
@@ -71,4 +79,3 @@ function formAttrOfMovie(array $movie, string $attr) : string
 
 	return substr_replace($result ,"",-2);
 }
-

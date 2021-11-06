@@ -24,7 +24,7 @@ require_once "./lib/helper-functions.php";
 			<div class="movie-list--item-clock">
 				<img src="./resources/img/clock.svg" alt="clock">
 			</div>
-			<div class="movie-list--item-time"><?= $movie['duration'] ?> мин. / <?= formDurationInHoursOfMovie($movie) ?></div>
+			<div class="movie-list--item-time"><?= $movie['duration'] ?> мин. / <?= formatMovieDurationInHours($movie) ?></div>
 			<div class="movie-list--item-info">
 				<?= formAttrOfMovie($movie, 'genres') ?>
 			</div>
