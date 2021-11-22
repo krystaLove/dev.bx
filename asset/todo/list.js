@@ -48,6 +48,7 @@ export class List
 	createItem(itemData)
 	{
 		itemData.deleteButtonHandler = this.handleDeleteButtonClick.bind(this);
+		itemData.onItemUpdatedHandler = this.handleOnItemUpdated.bind(this);
 		return new Item(itemData);
 	}
 
@@ -109,6 +110,15 @@ export class List
 				console.error('Error trying save items: ' + error);
 			});
 		}
+	}
+
+	handleOnItemUpdated()
+	{
+		this.save().then(() => {
+			this.renderItems();
+		}).catch((error) => {
+			console.error('Error trying save items: ' + error);
+		});
 	}
 
 	load()
