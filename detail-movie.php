@@ -19,7 +19,7 @@ $genres = getGenres($moviesDb);
 $movie = null;
 if(isset($_GET['movie-id']))
 {
-	$movie = getMovieById($movies, (int) $_GET['movie-id']);
+	$movie = getMovieById($moviesDb, (int) $_GET['movie-id']);
 }
 
 $page = renderTemplate("./resources/pages/detail-movie.php", [

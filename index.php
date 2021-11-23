@@ -1,7 +1,5 @@
 <?php
 
-/** @var array $genres */
-/** @var array $movies */
 require_once "./data/movies-db.php";
 /** @var array $config */
 require_once "./config/app.php";
@@ -16,27 +14,32 @@ $searchFilter = [];
 $currentPage = getFileName(__FILE__);
 $validatedSearch = [
 	'errors' => [],
-	'value' => []
+	'value' => ''
 ];
 
 $moviesDb = createDbConnection($config['db']);
 
 $genres = getGenres($moviesDb);
+$movies = [];
+
+if(isset($_GET['genre']))
+{
+	$genreFilter = $_GET['genre'];
+	$currentPage .= ($genreFilter !== '' ? '?' . $genreFilter : '');
+	$movies = getMovies($moviesDb, $genres, $genreFilter);
+}
+else
+{
+	$movies = getMovies($moviesDb, $genres);
+}
 
 if (isset($_GET['search']))
 {
 	$validatedSearch = validateSearch(escape($_GET['search']));
 	if(empty($validatedSearch['errors']))
 	{
-		$movies = getMoviesBySubstr($movies, $validatedSearch['value']);
+		$movies = getMoviesBySubstr($moviesDb, $genres, $validatedSearch['value']);
 	}
-}
-
-if(isset($_GET['genre']))
-{
-	$genreFilter = $_GET['genre'];
-	$movies = getMoviesByGenre($movies, $genres[$_GET['genre']]);
-	$currentPage .= ($genreFilter !== '' ? '?' . $genreFilter : '');
 }
 
 $page = renderTemplate("./resources/pages/movies-list.php", [

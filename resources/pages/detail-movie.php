@@ -13,8 +13,8 @@ require_once "./lib/helper-functions.php";
 			</div>
 		</div>
 		<div class="detail-movie-card--head-down">
-			<div class="detail-movie-card--head-subtitle"><?= $movie['original-title'] ?></div>
-			<div class="detail-movie-card--head-age-rating"><?= $movie['age-restriction'] ?>+</div>
+			<div class="detail-movie-card--head-subtitle"><?= $movie['original_title'] ?></div>
+			<div class="detail-movie-card--head-age-rating"><?= $movie['age_restriction'] ?>+</div>
 		</div>
 	</div>
 	<div class="detail-movie-card--body">
@@ -32,7 +32,7 @@ require_once "./lib/helper-functions.php";
 				<h1>О фильме</h1>
 				<div class="about-movie-wrapper--year-wrapper">
 					<h2>Год производства: </h2>
-					<a><?= $movie['release-date'] ?></a>
+					<a><?= $movie['release_date'] ?></a>
 				</div>
 				<div class="about-movie-wrapper--producer-wrapper">
 					<h2>Режиссёр: </h2>
@@ -40,7 +40,7 @@ require_once "./lib/helper-functions.php";
 				</div>
 				<div class="about-movie-wrapper--actors-wrapper">
 					<h2>В главных ролях: </h2>
-					<a><?= implode(', ', $movie['cast']) ?></a>
+					<a><?= implode(', ', $movie['actors']) ?></a>
 				</div>
 			</div>
 			<div class="detail-movie-card--body-right--description-wrapper">
