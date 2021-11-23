@@ -26,9 +26,9 @@ require_once "./lib/template-functions.php";
 				<li class="menu-item <?= $currentPage == 'index' ? "menu-item--active" : "" ?>">
 					<a href="index.php"><?= $config['menu']['index'] ?></a>
 				</li>
-				<?php foreach ($genres as $genreCode => $genreValue): ?>
-					<li class="menu-item <?= $currentPage == ('index' . '?' . $genreCode) ? "menu-item--active" : "" ?> ">
-						<a href="index.php?genre=<?= $genreCode ?>"><?= $genreValue ?></a>
+				<?php foreach ($genres as $genreId => $genreValue): ?>
+					<li class="menu-item <?= $currentPage == ('index' . '?' . $genreValue['CODE']) ? "menu-item--active" : "" ?> ">
+						<a href="index.php?genre=<?= $genreValue['CODE'] ?>"><?= $genreValue['NAME'] ?></a>
 					</li>
 				<?php endforeach; ?>
 				<li class="menu-item <?= $currentPage == 'favorite' ? "menu-item--active" : "" ?>">

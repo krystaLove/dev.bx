@@ -9,6 +9,7 @@ require_once "./lib/template-functions.php";
 require_once "./lib/movies-functions.php";
 require_once "./lib/helper-functions.php";
 require_once "./lib/validate-functions.php";
+require_once "./lib/db-functions.php";
 
 $genreFilter = '';
 $searchFilter = [];
@@ -17,6 +18,10 @@ $validatedSearch = [
 	'errors' => [],
 	'value' => []
 ];
+
+$moviesDb = createDbConnection($config['db']);
+
+$genres = getGenres($moviesDb);
 
 if (isset($_GET['search']))
 {

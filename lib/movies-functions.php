@@ -1,5 +1,24 @@
 <?php
 
+function getGenres(mysqli $db) : array
+{
+	$query = "SELECT CODE, NAME FROM genre";
+	$result = mysqli_query($db, $query);
+
+	$genres = [];
+
+	$i = 1;
+	while($row = mysqli_fetch_assoc($result))
+	{
+		$genres["$i"] = $row;
+		$i++;
+	}
+
+	print_r($genres);
+
+	return $genres;
+}
+
 function getMoviesByGenre(array $movies, string $genre) : array
 {
 	return array_filter($movies, static function($movie) use ($genre) {
