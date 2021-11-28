@@ -27,3 +27,14 @@ function createDbConnection(array $config) : mysqli
 
 	return $db;
 }
+
+function sqlQuery(mysqli $db, $query) : mysqli_result
+{
+	$result = mysqli_query($db, $query);
+	if(!$result)
+	{
+		trigger_error(mysqli_error($db), E_USER_ERROR);
+	}
+
+	return $result;
+}

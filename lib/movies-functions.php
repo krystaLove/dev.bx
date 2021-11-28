@@ -3,7 +3,7 @@
 function getGenres(mysqli $db) : array
 {
 	$query = "SELECT CODE, NAME FROM genre";
-	$result = mysqli_query($db, $query);
+	$result = sqlQuery($db, $query);
 
 	$genres = [];
 
@@ -24,11 +24,7 @@ function getActorsByIds(mysqli $db, string $ids) : array
 		WHERE ID in (${ids})
 	";
 
-	$result = mysqli_query($db, $query);
-	if(!$result)
-	{
-		trigger_error(mysqli_error($db), E_USER_ERROR);
-	}
+	$result = sqlQuery($db, $query);
 
 	$actors = [];
 	while($row = mysqli_fetch_assoc($result))
@@ -53,12 +49,7 @@ function getMovies(mysqli $db, array $genres, string $genreCode = null) : array
 		";
 	}
 
-	$result = mysqli_query($db, $query);
-
-	if(!$result)
-	{
-		trigger_error(mysqli_error($db), E_USER_ERROR);
-	}
+	$result = sqlQuery($db, $query);
 
 	$movies = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
@@ -72,11 +63,7 @@ function getMovieById(mysqli $db, int $id) : array
 	$query = getMoviesSelectQuery() .
 		"WHERE m.ID = '${id}'";
 
-	$result = mysqli_query($db, $query);
-	if(!$result)
-	{
-		trigger_error(mysqli_error($db), E_USER_ERROR);
-	}
+	$result = sqlQuery($db, $query);
 
 	$movies = mysqli_fetch_all($result, MYSQLI_ASSOC);
 	$actors = getActorsByIds($db, $movies[0]['ACTORS']);
@@ -92,11 +79,7 @@ function getMoviesBySubstr(mysqli $db, array $genres, string $searchStr) : array
 	$query = getMoviesSelectQuery() .
 		"WHERE m.TITLE LIKE '%${searchStr}%' OR m.ORIGINAL_TITLE LIKE '%${searchStr}%'";
 
-	$result = mysqli_query($db, $query);
-	if(!$result)
-	{
-		trigger_error(mysqli_error($db), E_USER_ERROR);
-	}
+	$result = sqlQuery($db, $query);
 
 	$movies = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
