@@ -10,7 +10,7 @@ require_once "./lib/template-functions.php"
 <div class="movie-list">
 	<?php if(empty($movies)):?>
 		<div style="font-family:Open Sans, sans-serif; font-size: 25px; margin-top: 30px">
-			По данному запросу не было найдено ни одного фильма.
+			По данному запросу нет ни одного фильма.
 		</div>
 	<?php endif ?>
 	<?php foreach ($movies as $movie): ?>

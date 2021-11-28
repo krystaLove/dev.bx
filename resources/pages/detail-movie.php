@@ -4,6 +4,9 @@ require_once "./lib/helper-functions.php";
 /** @var array|null $movie */
 ?>
 
+<?php if (!$movie): ?>
+<div>404 Error</div>
+<?php else: ?>
 <div class="detail-movie-card">
 	<div class="detail-movie-card--head">
 		<div class="detail-movie-card--head-up">
@@ -52,3 +55,5 @@ require_once "./lib/helper-functions.php";
 		</div>
 	</div>
 </div>
+
+<?php endif ?>
