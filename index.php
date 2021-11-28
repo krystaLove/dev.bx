@@ -1,6 +1,5 @@
 <?php
 
-require_once "./data/movies-db.php";
 /** @var array $config */
 require_once "./config/app.php";
 require_once "./lib/template-functions.php";

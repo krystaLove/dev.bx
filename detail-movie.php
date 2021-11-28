@@ -1,8 +1,5 @@
 <?php
 
-/** @var array $genres */
-/** @var array $movies */
-require_once "./data/movies-db.php";
 require_once "./lib/template-functions.php";
 require_once "./lib/movies-functions.php";
 
