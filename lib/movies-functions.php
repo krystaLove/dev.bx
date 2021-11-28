@@ -106,6 +106,15 @@ function getMoviesSelectQuery() : string
 	";
 }
 
+/**
+ * It joins $key field of given movies with data by id and replace it by array
+ *
+ * @param array $movies
+ * @param string $key
+ * @param array $data
+ *
+ * @return array
+ */
 function joinMovieDataNames(array $movies, string $key, array $data) : array
 {
 	foreach ($movies as $i => $movie)
