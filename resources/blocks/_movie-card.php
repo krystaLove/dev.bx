@@ -16,7 +16,7 @@ require_once "./lib/helper-functions.php";
 	</div>
 	<div class="movie-list--item-head">
 		<div class="movie-list--item-title"><?= $movie['title']?></div>
-		<div class="movie-list--item-subtitle"><?= $movie['original-title']?></div>
+		<div class="movie-list--item-subtitle"><?= $movie['original_title']?></div>
 	</div>
 	<div class="movie-list--item-wrapper">
 		<div class="movie-list--item-description"><?= cutString($movie['description'], $config['card-description-length']) ?></div>
