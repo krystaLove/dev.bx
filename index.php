@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 /** @var array $config */
 require_once "./config/app.php";
