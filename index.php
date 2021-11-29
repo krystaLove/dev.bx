@@ -25,7 +25,7 @@ $movies = [];
 if(isset($_GET['genre']))
 {
 	$genreFilter = $_GET['genre'];
-	$currentPage .= ($genreFilter !== '' ? '?' . $genreFilter : '');
+	$currentPage = $genreFilter;
 	$movies = getMovies($moviesDb, $genres, $genreFilter);
 }
 else

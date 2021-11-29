@@ -23,15 +23,15 @@ require_once "./lib/template-functions.php";
 				<img src="./resources/img/logo.svg" alt="<?= $config['title'] ?>">
 			</a>
 			<ul class="menu">
-				<li class="menu-item <?= $currentPage == 'index' ? "menu-item--active" : "" ?>">
+				<li class="menu-item <?= $currentPage === 'index' ? "menu-item--active" : "" ?>">
 					<a href="index.php"><?= $config['menu']['index'] ?></a>
 				</li>
 				<?php foreach ($genres as $genreId => $genreValue): ?>
-					<li class="menu-item <?= $currentPage == ('index' . '?' . $genreValue['CODE']) ? "menu-item--active" : "" ?> ">
+					<li class="menu-item <?= $currentPage === $genreValue['CODE'] ? "menu-item--active" : "" ?> ">
 						<a href="index.php?genre=<?= $genreValue['CODE'] ?>"><?= $genreValue['NAME'] ?></a>
 					</li>
 				<?php endforeach; ?>
-				<li class="menu-item <?= $currentPage == 'favorite' ? "menu-item--active" : "" ?>">
+				<li class="menu-item <?= $currentPage === 'favorite' ? "menu-item--active" : "" ?>">
 					<a href="favorite.php"><?= $config['menu']['favorite'] ?></a>
 				</li>
 			</ul>
