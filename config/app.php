@@ -11,7 +11,7 @@ $config = [
 
 $config['db'] = [
 	'host' => 'localhost',
-	'user' => 'user',
-	'password' => 'user-passwd',
-	'db-name' => 'movies'
+	'user' => 'php',
+	'password' => 'php',
+	'db-name' => 'dev'
 ];
