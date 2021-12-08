@@ -2,11 +2,11 @@
 
 namespace Army\Weapon;
 
-class Bow implements Weapon
+class Spear implements Weapon
 {
 
 	public function getDescription(): string
 	{
-		return "Bow";
+		return "Spear";
 	}
 }
