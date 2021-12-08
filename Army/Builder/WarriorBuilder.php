@@ -5,16 +5,46 @@ use Army\Armor\Armor;
 use Army\WarriorTemplate;
 use Army\Weapon\Weapon;
 
-interface WarriorBuilder
+abstract class WarriorBuilder
 {
-	public function addRightHandWeapon(?Weapon $weapon = null): WarriorBuilder;
-	public function addLeftHandWeapon(?Weapon $weapon = null): WarriorBuilder;
+	private $warriorTemplate;
 
-	public function addRightHandArmor(?Armor $armor = null): WarriorBuilder;
-	public function addLeftHandArmor(?Armor $armor = null): WarriorBuilder;
-	public function addHeadArmor(?Armor $armor = null): WarriorBuilder;
+	public function addRightHandWeapon(?Weapon $weapon = null): WarriorBuilder
+	{
+		$this->warriorTemplate->set('rightHandWeapon', $weapon);
+		return $this;
+	}
 
-	public function createWarriorTemplate(): WarriorBuilder;
+	public function addLeftHandWeapon(?Weapon $weapon = null): WarriorBuilder
+	{
+		$this->warriorTemplate->set('leftHandWeapon', $weapon);
+		return $this;
+	}
 
-	public function getWarrior(): WarriorTemplate;
+	public function addRightHandArmor(?Armor $armor = null): WarriorBuilder
+	{
+		return $this;
+	}
+
+	public function addLeftHandArmor(?Armor $armor = null): WarriorBuilder
+	{
+		$this->warriorTemplate->set('leftHandArmor', $armor);
+		return $this;
+	}
+
+	public function addHeadArmor(?Armor $armor = null): WarriorBuilder
+	{
+		return $this;
+	}
+
+	public function createWarriorTemplate(): WarriorBuilder
+	{
+		$this->warriorTemplate = new WarriorTemplate();
+		return $this;
+	}
+
+	public function getWarrior(): WarriorTemplate
+	{
+		return $this->warriorTemplate;
+	}
 }
