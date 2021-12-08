@@ -12,6 +12,11 @@ class WarriorTemplate
 		'headArmor' => null,
 	];
 
+	public function get($param) : ?object
+	{
+		return $this->params[$param] ?? null;
+	}
+
 	public function set($param, $value)
 	{
 		$this->params[$param] = $value;
