@@ -19,6 +19,34 @@ class OperationTest extends TestCase
 		return $order;
 	}
 
+	protected function getOrderThatIsNeverUsed()
+	{
+		$order = $this->getMockBuilder(\App\Order::class)
+					  ->onlyMethods(['save'])
+					  ->getMock()
+		;
+
+		$order->expects(static::never())
+			  ->method('save')
+		;
+
+		return $order;
+	}
+
+	protected function getActionThatProcessSuccessfully()
+	{
+		$action = $this->getMockBuilder(\App\Operation\Action::class)
+					   ->onlyMethods(['process'])
+					   ->getMockForAbstractClass()
+		;
+		$action->expects(static::once())
+			   ->method('process')
+			   ->willReturn(new \App\Result())
+		;
+
+		return $action;
+	}
+
 	protected function getActionThatNeverInvoked()
 	{
 		$action = $this->getMockBuilder(\App\Operation\Action::class)
@@ -169,5 +197,76 @@ class OperationTest extends TestCase
 		);
 
 		$operation->launch();
+	}
+
+	public function testThatOperationDoesNotInvokeAfterActionsIfTheyDisabledInSettings(): void
+	{
+		$settings = new App\Operation\Settings();
+
+		$settings->disableAfterSaveActions();
+
+		$order = $this->getOrderThatSavesSuccessfully();
+
+		$operation = new App\Operation\Operation($order, $settings);
+		$operation->addAction(
+			App\Operation\Operation::ACTION_AFTER_SAVE,
+			$this->getActionThatNeverInvoked()
+		);
+
+		$operation->launch();
+	}
+
+	public function testThatOperationsInvokeIfSettingsIsDefault(): void
+	{
+		$order = $this->getOrderThatSavesSuccessfully();
+
+		$operation = new App\Operation\Operation($order, null);
+
+		$operation
+			->addAction(
+			App\Operation\Operation::ACTION_BEFORE_SAVE,
+				$this->getActionThatProcessSuccessfully())
+			->addAction(
+			App\Operation\Operation::ACTION_AFTER_SAVE,
+				$this->getActionThatProcessSuccessfully())
+		;
+
+		$operation->launch();
+	}
+
+	public function testThatAddActionThrowExceptionIfActionPlacementIsNotValid(): void
+	{
+		$order = $this->getOrderThatIsNeverUsed();
+
+		$operation = new App\Operation\Operation($order, null);
+
+		$this->expectException(Exception::class);
+
+		$operation->addAction("", $this->getActionThatNeverInvoked());
+	}
+
+	public function testThatLaunchFailIfAfterSaveActionFail(): void
+	{
+		$order = $this->getOrderThatSavesSuccessfully();
+
+		$settings = new \App\Operation\Settings();
+
+		$operation = new App\Operation\Operation($order, $settings);
+
+		$action = $this->getMockBuilder(\App\Operation\Action::class)
+					   ->onlyMethods(['process'])
+					   ->getMockForAbstractClass()
+		;
+		$action->expects(static::once())
+			   ->method('process')
+			   ->willReturn((new \App\Result())->addError(new Error("Error processing")));
+
+		$operation
+			->addAction(App\Operation\Operation::ACTION_AFTER_SAVE, $action);
+		;
+
+		$result = $operation->launch();
+
+		self::assertFalse($result->isSuccess());
 	}
 }
