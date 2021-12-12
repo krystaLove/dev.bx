@@ -2,7 +2,7 @@
 
 namespace Entity;
 
-class Advertisement
+class Advertisement implements IAdvertisement
 {
 	private string $title;
 	private string $body;
@@ -20,7 +20,7 @@ class Advertisement
 	 * @param string $title
 	 * @return Advertisement
 	 */
-	public function setTitle(string $title): Advertisement
+	public function setTitle(string $title): IAdvertisement
 	{
 		$this->title = $title;
 		return $this;
@@ -38,7 +38,7 @@ class Advertisement
 	 * @param string $body
 	 * @return Advertisement
 	 */
-	public function setBody(string $body): Advertisement
+	public function setBody(string $body): IAdvertisement
 	{
 		$this->body = $body;
 		return $this;
@@ -56,7 +56,7 @@ class Advertisement
 	 * @param int $duration
 	 * @return Advertisement
 	 */
-	public function setDuration(int $duration): Advertisement
+	public function setDuration(int $duration): IAdvertisement
 	{
 		$this->duration = $duration;
 		return $this;
