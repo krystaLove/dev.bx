@@ -4,6 +4,7 @@ spl_autoload_register(static function ($class) {
 	include __DIR__ . '/' . str_replace("\\", "/",  $class) . '.php';
 });
 
+
 $advertisement = (new \Entity\Advertisement())
 	->setBody("Some body text")
 	->setTitle("Some title text")
@@ -16,3 +17,5 @@ $advertisement = (new \Decorator\HeaderAdvertisementDecorator($advertisement))
 	->addBodyData("Header");
 
 var_dump($advertisement);
+
+\Service\Helper::runAvitoAdvertisement($advertisement);
