@@ -1,17 +1,18 @@
 <?php
 
-spl_autoload_register(function ($class) {
+spl_autoload_register(static function ($class) {
 	include __DIR__ . '/' . str_replace("\\", "/",  $class) . '.php';
 });
 
-
 $advertisement = (new \Entity\Advertisement())
-	->setBody("test")
-	->setTitle("test")
+	->setBody("Some body text")
+	->setTitle("Some title text")
 	->setDuration(10);
 
-$calculator = new \Service\AdvCalculator($advertisement);
-$calculator->applyCost();
+$advertisement = (new \Decorator\FooterAdvertisementDecorator($advertisement))
+	->addBodyData("Footer");
 
-$calculator = new \Decorator\VatCostDecorator($calculator);
-var_dump($calculator->applyCost()->getTotalCost());
+$advertisement = (new \Decorator\HeaderAdvertisementDecorator($advertisement))
+	->addBodyData("Header");
+
+var_dump($advertisement);
