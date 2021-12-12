@@ -18,7 +18,8 @@ class Advertisement implements IAdvertisement
 
 	/**
 	 * @param string $title
-	 * @return Advertisement
+	 *
+	 * @return IAdvertisement
 	 */
 	public function setTitle(string $title): IAdvertisement
 	{
@@ -36,7 +37,8 @@ class Advertisement implements IAdvertisement
 
 	/**
 	 * @param string $body
-	 * @return Advertisement
+	 *
+	 * @return IAdvertisement
 	 */
 	public function setBody(string $body): IAdvertisement
 	{
@@ -54,7 +56,8 @@ class Advertisement implements IAdvertisement
 
 	/**
 	 * @param int $duration
-	 * @return Advertisement
+	 *
+	 * @return IAdvertisement
 	 */
 	public function setDuration(int $duration): IAdvertisement
 	{

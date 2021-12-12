@@ -2,7 +2,7 @@
 
 namespace Adapter;
 
-use Entity\Advertisement;
+use Entity\IAdvertisement;
 use Entity\AdvertisementResponse;
 use External\VkAdvertisement;
 use External\VkPublicator;
@@ -11,7 +11,7 @@ use Service\AdvertisementProviderInterface;
 class VkAdvertisementProviderAdapter implements AdvertisementProviderInterface
 {
 
-	public function publicate(Advertisement $advertisement): AdvertisementResponse
+	public function publicate(IAdvertisement $advertisement): AdvertisementResponse
 	{
 		$vkAdvertisement = new VkAdvertisement();
 

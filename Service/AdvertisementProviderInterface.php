@@ -2,13 +2,13 @@
 
 namespace Service;
 
-use Entity\Advertisement;
+use Entity\IAdvertisement;
 use Entity\AdvertisementResponse;
 
 interface AdvertisementProviderInterface
 {
-	public function publicate(Advertisement $advertisement): AdvertisementResponse;
-	public function prepare(Advertisement $advertisement);
-	public function check(Advertisement $advertisement);
-	public function calculateDuration(Advertisement $advertisement);
+	public function publicate(IAdvertisement $advertisement): AdvertisementResponse;
+	public function prepare(IAdvertisement $advertisement);
+	public function check(IAdvertisement $advertisement);
+	public function calculateDuration(IAdvertisement $advertisement);
 }

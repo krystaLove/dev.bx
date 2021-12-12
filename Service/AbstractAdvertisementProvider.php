@@ -2,8 +2,6 @@
 
 namespace Service;
 
-use Entity\Advertisement;
-use Entity\AdvertisementResponse;
 use Service\Formatting\Formatter;
 
 abstract class AbstractAdvertisementProvider implements AdvertisementProviderInterface

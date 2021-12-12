@@ -2,17 +2,17 @@
 
 namespace Service;
 
-use Entity\Advertisement;
+use Entity\IAdvertisement;
 
 class AdvCalculator implements Calculator
 {
 	private float $totalCost;
-	private Advertisement $advertisement;
+	private IAdvertisement $advertisement;
 
 	/**
-	 * @param Advertisement $advertisement
+	 * @param IAdvertisement $advertisement
 	 */
-	public function __construct(Advertisement $advertisement)
+	public function __construct(IAdvertisement $advertisement)
 	{
 		$this->advertisement = $advertisement;
 	}
