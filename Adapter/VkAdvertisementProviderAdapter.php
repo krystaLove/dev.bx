@@ -11,17 +11,17 @@ use Service\AdvertisementProviderInterface;
 class VkAdvertisementProviderAdapter implements AdvertisementProviderInterface
 {
 
-	public function publicate(Advertisement $advertsement): AdvertisementResponse
+	public function publicate(Advertisement $advertisement): AdvertisementResponse
 	{
 		$vkAdvertisement = new VkAdvertisement();
 
-		if (!$advertsement->getTitle())
+		if (!$advertisement->getTitle())
 		{
-			$advertsement->setTitle("default");
+			$advertisement->setTitle("default");
 		}
 		$vkAdvertisement
-			->setTitle($advertsement->getTitle())
-			->setMessageBody($advertsement->getBody());
+			->setTitle($advertisement->getTitle())
+			->setMessageBody($advertisement->getBody());
 
 		$result = (new VkPublicator())->publicate($vkAdvertisement);
 
