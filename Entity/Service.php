@@ -7,8 +7,10 @@ class Service
 	public const TYPES = [
 		"premium" => 0,
 		"premium_lite" => 1,
+		"premium_gold" => 2
 	];
 
+	private $isGold;
 	private $isLite;
 	private $activatedAt;
 	private $activatedUntil;
@@ -106,6 +108,25 @@ class Service
 		$this->isLite = $isLite;
 		return $this;
 	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getIsGold()
+	{
+		return $this->isGold;
+	}
+
+	/**
+	 * @param mixed $isGold
+	 * @return Service
+	 */
+	public function setIsGold($isGold)
+	{
+		$this->isGold = $isGold;
+		return $this;
+	}
+
 
 	/**
 	 * @return mixed
