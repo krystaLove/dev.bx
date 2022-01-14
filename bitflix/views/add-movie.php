@@ -1,0 +1,1 @@
+<div style="font-family: Open Sans, sans-serif; font-size: 30px">Заглушка для страницы с добавлением фильма</div>
