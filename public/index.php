@@ -17,7 +17,7 @@ $app->router->get('/genre', [SiteController::class, 'genre']);
 $app->router->get('/movie', [SiteController::class, 'movie']);
 $app->router->get('/search', [SiteController::class, 'search']);
 $app->router->get('/favorite', [SiteController::class, 'favorite']);
-$app->router->get('/movie-add', [SiteController::class, 'movieAdd']);
+$app->router->get('/add-movie', [SiteController::class, 'movieAdd']);
 
 $app->serviceContainer->add('movie', MovieService::class, [new MysqlMovieRepository()]);
 
