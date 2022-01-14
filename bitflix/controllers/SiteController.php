@@ -69,6 +69,7 @@ class SiteController extends Controller
 		if(isset($movieSearch) && !empty($movieSearch))
 		{
 			$data['movies'] = $this->movieService->getMoviesBySubstr($data['genres'], $movieSearch);
+			$data['lastSearch'] = $movieSearch;
 		}
 		else
 		{
