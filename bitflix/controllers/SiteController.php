@@ -21,7 +21,7 @@ class SiteController extends Controller
 
 	public function index(): string
 	{
-		return $this->render('index', $this->formCommonData(true));
+		return $this->render('index', $this->formCommonData('/', true));
 	}
 
 	public function genre(Request $request, Response $response): string
@@ -82,22 +82,22 @@ class SiteController extends Controller
 
 	public function favorite(): string
 	{
-		return $this->render('favorite', $this->formCommonData(true));
+		return $this->render('favorite', $this->formCommonData('favorite', true));
 	}
 
 	public function movieAdd(): string
 	{
-		return $this->render('add-movie', $this->formCommonData(true));
+		return $this->render('add-movie', $this->formCommonData('add-movie', true));
 	}
 
 
-	private function formCommonData(bool $addAllMovies = false): array
+	private function formCommonData($currentPage = '/', bool $addAllMovies = false): array
 	{
 		$data = [
 			'config' => Application::$app->config->get('app'),
 			'genres' => $this->movieService->getAllGenres(),
 			'lastSearch' => '',
-			'currentPage' =>'/'
+			'currentPage' => $currentPage
 		];
 
 		if($addAllMovies)

@@ -36,7 +36,7 @@ use bitflix\core\View;
 					</li>
 				<?php endforeach; ?>
 				<li class="menu-item <?= $currentPage === 'favorite' ? "menu-item--active" : "" ?>">
-					<a href="favorite.php"><?= $config['menu']['favorite'] ?></a>
+					<a href="/favorite"><?= $config['menu']['favorite'] ?></a>
 				</li>
 			</ul>
 		</div>
@@ -45,7 +45,7 @@ use bitflix\core\View;
 				<div class="header-content">
 					<?= View::renderTemplate(Application::$ROOT_DIR . './bitflix/views/blocks/_search-bar.php', ['lastSearch' => $lastSearch]); ?>
 					<div class="header-content--add-film-btn btn-round btn-green">
-						<a href="add-movie.php">Добавить фильм</a>
+						<a href="/add-movie">Добавить фильм</a>
 					</div>
 				</div>
 			</div>
