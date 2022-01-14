@@ -1,0 +1,20 @@
+{
+	"name": "krystal/dev.bx",
+	"description": "",
+	"minimum-stability": "stable",
+	"license": "proprietary",
+	"authors": [
+		{
+			"name": "krystaL",
+			"email": "denis.zhuravkov@gmail.com"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"bitflix\\" : "./bitflix"
+		}
+	},
+	"require": {
+		"ext-mysqli": "*"
+	}
+}
